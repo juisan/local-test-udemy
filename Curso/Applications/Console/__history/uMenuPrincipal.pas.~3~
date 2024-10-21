@@ -1,0 +1,71 @@
+unit uMenuPrincipal;
+
+interface
+
+procedure Menu;
+
+procedure MenuCliente;
+
+procedure MenuVeiculo;
+
+procedure MenuLocacao;
+
+implementation
+
+procedure Menu;
+var
+ Codigo : integer;
+ Modulo : string;
+begin
+
+  writeln('Menu Principal');
+  writeln;
+  writeln;
+
+
+  Modulo := '1 - Clientes' +  #13#10 +
+            '2 - Veiculos' +  #13#10 +
+            '3 - Locação ';
+
+  writeln(Modulo);
+  write(Output, 'Opção: ');
+  readln(Input,Codigo);
+
+  case Codigo  of
+
+    1 : MenuCliente;
+    2 : MenuVeiculo;
+    3 : MenuLocacao;
+
+  end;
+
+
+  // Menu clientes
+
+  // Menu veiculos
+
+  // Menu locação
+
+
+end;
+
+
+procedure MenuCliente;
+begin
+
+end;
+
+
+procedure MenuVeiculo;
+begin
+
+end;
+
+
+procedure MenuLocacao;
+begin
+
+end;
+
+
+end.

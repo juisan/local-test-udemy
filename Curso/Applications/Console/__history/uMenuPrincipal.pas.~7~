@@ -1,0 +1,171 @@
+unit uMenuPrincipal;
+
+interface
+
+uses  winapi.Windows, System.SysUtils;
+
+procedure Menu;
+
+// Modulo Cliente
+procedure MenuCliente;
+
+procedure CadastrarCliente;
+procedure AlterarCliente;
+procedure ExcluirCliente;
+procedure ConsultarCliente;
+
+//Modulo Veiculo
+procedure MenuVeiculo;
+
+//Modulo Locação
+procedure MenuLocacao;
+
+
+procedure clean;
+
+function Modulos : string;
+
+
+
+implementation
+
+function Modulos : string;
+begin
+
+  result := ' 1 - Cadastrar ' + #13#10  +
+            ' 2 - Alterar   ' + #13#10  +
+            ' 3 - Editar    ' + #13#10  +
+            ' 4 - Consultar ' + #13#10  +
+            ' 5   Voltar ' ;
+end;
+
+procedure clean;
+var
+  stdout: THandle;
+  csbi: TConsoleScreenBufferInfo;
+  ConsoleSize: DWORD;
+  NumWritten: DWORD;
+  Origin: TCoord;
+begin
+  stdout := GetStdHandle(STD_OUTPUT_HANDLE);
+  Win32Check(stdout<>INVALID_HANDLE_VALUE);
+  Win32Check(GetConsoleScreenBufferInfo(stdout, csbi));
+  ConsoleSize := csbi.dwSize.X * csbi.dwSize.Y;
+  Origin.X := 0;
+  Origin.Y := 0;
+  Win32Check(FillConsoleOutputCharacter(stdout, ' ', ConsoleSize, Origin,
+    NumWritten));
+  Win32Check(FillConsoleOutputAttribute(stdout, csbi.wAttributes, ConsoleSize, Origin,
+    NumWritten));
+  Win32Check(SetConsoleCursorPosition(stdout, Origin));
+
+end;
+
+
+procedure Menu;
+var
+ Codigo : integer;
+ Modulo : string;
+begin
+
+  clean;
+
+  writeln('Menu Principal');
+  writeln;
+
+
+  Modulo := '1 - Clientes' +  #13#10 +
+            '2 - Veiculos' +  #13#10 +
+            '3 - Locação ';
+
+  writeln(Modulo);
+  write(Output, 'Opção: ');
+  readln(Input,Codigo);
+
+  case Codigo  of
+
+    1 : MenuCliente;
+    2 : MenuVeiculo;
+    3 : MenuLocacao;
+
+  end;
+
+
+  // Menu clientes
+
+  // Menu veiculos
+
+  // Menu locação
+
+end;
+
+
+procedure MenuCliente;
+var
+ Codigo : integer;
+begin
+
+  writeln('Menu Clientes');
+  writeln;
+
+  writeln(Modulos);
+  write(Output, 'Opção: ');
+  readln(Input,Codigo);
+
+  case Codigo  of
+
+    1 : CadastrarCliente;
+    2 : AlterarCliente;
+    3 : ExcluirCliente;
+    4 : ConsultarCliente;
+    5 : Menu;
+    else
+    begin
+      writeln('Opção inválida');
+      readln;
+    end;
+
+
+  end;
+
+end;
+
+// Modulo de Cliente
+procedure CadastrarCliente;
+begin
+ clean;
+ writeln('Cadastro de cliente');
+ readln;
+ Menu;
+
+end;
+
+procedure AlterarCliente;
+begin
+
+end;
+
+procedure ExcluirCliente;
+begin
+
+end;
+
+procedure ConsultarCliente;
+begin
+
+end;
+
+
+procedure MenuVeiculo;
+begin
+
+end;
+
+
+procedure MenuLocacao;
+begin
+
+end;
+
+
+end.

@@ -1,0 +1,21 @@
+unit uResponse;
+
+interface
+
+uses System.Generics.Collections;
+
+type
+
+
+ Tresponse = record
+
+   success   : boolean;
+   ErrorCode : integer;
+   Message   : string;
+   Data      : TListObject<TObject>;
+
+ end;
+
+implementation
+
+end.
